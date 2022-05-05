@@ -1,0 +1,12 @@
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.BackLink {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}

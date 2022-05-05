@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Link, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import App from "./App";
+import PageNotFound from "./components/UI/PageNotFound/PageNotFound";
 import Character from "./routes/character";
 import Favorites from "./routes/favorites";
 
@@ -19,10 +20,7 @@ root.render(
           <Route
             path="*"
             element={
-              <main style={{ padding: "1rem" }}>
-                <p>The page you're looking for is not found</p>
-                <Link to="/characters">Back to Characters</Link>
-              </main>
+              <PageNotFound />
             }
           />
         </Route>

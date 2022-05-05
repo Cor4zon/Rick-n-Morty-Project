@@ -1,0 +1,17 @@
+.likeCounter {
+  color: white;
+  padding: 0 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.likeCounter span {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+p {
+  position: relative;
+  top: 2px;
+}

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import "./Card.css";
 
 import { decrement, increment } from "../../features/likeCounter/likeCounterSlice";
+import { addFavoriteCharacter,  removeFavoriteCharacter} from "../../features/favoriteCharacters/favoriteCharactersSlice";
 import { useDispatch } from "react-redux";
 
 const ButtonAdd = styled.button`
@@ -42,6 +43,7 @@ const Card = ({ character }) => {
     // удалить из localStorage
     setFavoriteCharacters(favoriteCharacters);
     setIsFavorite(false);
+    dispatch(removeFavoriteCharacter(pickedCharacterIndex));
     dispatch(decrement());
   }
 
@@ -59,6 +61,7 @@ const Card = ({ character }) => {
     favoriteCharacters.push(pickedCharacter);
     setIsFavorite(true);
     dispatch(increment());
+    dispatch(addFavoriteCharacter(pickedCharacter));
     setFavoriteCharacters(favoriteCharacters);
   };
 

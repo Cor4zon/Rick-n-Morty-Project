@@ -1,4 +1,5 @@
-import React from "react";
+import { type } from "@testing-library/user-event/dist/type";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -21,6 +22,30 @@ const ImageCharacter = styled.img`
 `;
 
 const Card = ({ character }) => {
+  const [ isFavorite, setIsFavorite ] = useState(false);
+
+  const BtnClickHandler = (event) => {
+    event.preventDefault();
+
+    const pickedCharacter = character.id;
+    let favoriteCharacters = JSON.parse(localStorage.getItem('favoriteCharacters')) || [];
+
+    console.log(pickedCharacter);
+
+    if (favoriteCharacters.includes(pickedCharacter)) {
+      favoriteCharacters.splice(favoriteCharacters.indexOf(pickedCharacter), 1);
+      localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
+      setIsFavorite(false);
+      return ;
+    } 
+    
+    favoriteCharacters.push(pickedCharacter);
+    setIsFavorite(true);
+
+    console.log(isFavorite);
+    localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
+  };
+
   return (
     <div className="Card">
       <Link
@@ -38,11 +63,12 @@ const Card = ({ character }) => {
         <div className="characher-description">
           <h4>{character.name}</h4>
           <p className="character-info">
-            {character.species} - 
-            {character.status}
+            {character.species} -{character.status}
           </p>
 
-          <ButtonAdd>Add to Favorites</ButtonAdd>
+          <ButtonAdd onClick={BtnClickHandler}>
+            {isFavorite ? `Remove from Favorites` : `Add to Favorites`}
+          </ButtonAdd>
         </div>
       </Link>
     </div>

@@ -28,25 +28,38 @@ const Card = ({ character }) => {
   const [ isFavorite, setIsFavorite ] = useState(false);
   const dispatch = useDispatch();
 
+  const getFavoriteCharacters = () => {
+    return JSON.parse(localStorage.getItem('favoriteCharacters')) || [];
+  }
+
+  const setFavoriteCharacters = (favoriteCharacters) => {
+    localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
+  }
+
+  const dislikeCharacter = (favoriteCharacters, pickedCharacter) => {
+    const pickedCharacterIndex = favoriteCharacters.indexOf(pickedCharacter);
+    favoriteCharacters.splice(pickedCharacterIndex, 1);
+    // удалить из localStorage
+    setFavoriteCharacters(favoriteCharacters);
+    setIsFavorite(false);
+    dispatch(decrement());
+  }
+
   const BtnClickHandler = (event) => {
     event.preventDefault();
-
     const pickedCharacter = character.id;
-    let favoriteCharacters = JSON.parse(localStorage.getItem('favoriteCharacters')) || [];
+    const favoriteCharacters = getFavoriteCharacters();
 
+    // Удаление персонажа из списка любимых
     if (favoriteCharacters.includes(pickedCharacter)) {
-      favoriteCharacters.splice(favoriteCharacters.indexOf(pickedCharacter), 1);
-      localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
-      setIsFavorite(false);
-      dispatch(decrement());
-
+      dislikeCharacter(favoriteCharacters, pickedCharacter);
       return ;
     } 
     
     favoriteCharacters.push(pickedCharacter);
     setIsFavorite(true);
     dispatch(increment());
-    localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
+    setFavoriteCharacters(favoriteCharacters);
   };
 
   return (

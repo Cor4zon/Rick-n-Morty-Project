@@ -1,12 +1,14 @@
 import React from "react";
 import CardGrid from "../components/CardGrid/CardGrid";
+import FilterBar from "../components/UI/FilterBar/FilterBar";
 
+import { characters } from "../charactersData";
 
 const Character = () => {
+
   return (
     <>
-      <h2>Character</h2>
-      <CardGrid />
+      <CardGrid characters={ characters }/>
     </>
   );
 };

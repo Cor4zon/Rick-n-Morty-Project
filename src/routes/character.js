@@ -1,6 +1,5 @@
 import React from "react";
 import CardGrid from "../components/CardGrid/CardGrid";
-import FilterBar from "../components/UI/FilterBar/FilterBar";
 
 import { characters } from "../charactersData";
 

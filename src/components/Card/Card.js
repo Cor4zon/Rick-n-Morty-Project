@@ -7,7 +7,7 @@ import "./Card.css";
 
 import { decrement, increment } from "../../features/likeCounter/likeCounterSlice";
 import { addFavoriteCharacter,  removeFavoriteCharacter} from "../../features/favoriteCharacters/favoriteCharactersSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ButtonAdd = styled.button`
   background-color: #000;
@@ -26,7 +26,8 @@ const ImageCharacter = styled.img`
 `;
 
 const Card = ({ character }) => {
-  const [ isFavorite, setIsFavorite ] = useState(false);
+  // TODO: скорее всего текст на кнопке можно менять способом попроще
+  const favoriteCharacters = useSelector(state => state.favoriteCharacters.characters);
   const dispatch = useDispatch();
 
   const getFavoriteCharacters = () => {
@@ -42,7 +43,6 @@ const Card = ({ character }) => {
     favoriteCharacters.splice(pickedCharacterIndex, 1);
     // удалить из localStorage
     setFavoriteCharacters(favoriteCharacters);
-    setIsFavorite(false);
     dispatch(removeFavoriteCharacter(pickedCharacterIndex));
     dispatch(decrement());
   }
@@ -59,11 +59,14 @@ const Card = ({ character }) => {
     } 
     
     favoriteCharacters.push(pickedCharacter);
-    setIsFavorite(true);
     dispatch(increment());
     dispatch(addFavoriteCharacter(pickedCharacter));
     setFavoriteCharacters(favoriteCharacters);
   };
+
+  const getButtonText = () => {
+    return favoriteCharacters.includes(character.id) ? `Remove from Favorites` : `Add to Favorites`
+  }
 
   return (
     <div className="Card">
@@ -86,7 +89,7 @@ const Card = ({ character }) => {
           </p>
 
           <ButtonAdd onClick={BtnClickHandler}>
-            {isFavorite ? `Remove from Favorites` : `Add to Favorites`}
+            { getButtonText() }
           </ButtonAdd>
         </div>
       </Link>

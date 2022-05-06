@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./Card.css";
 
+import { decrement, increment } from "../../features/likeCounter/likeCounterSlice";
+import { useDispatch } from "react-redux";
+
 const ButtonAdd = styled.button`
   background-color: #000;
   color: #fff;
@@ -23,6 +26,7 @@ const ImageCharacter = styled.img`
 
 const Card = ({ character }) => {
   const [ isFavorite, setIsFavorite ] = useState(false);
+  const dispatch = useDispatch();
 
   const BtnClickHandler = (event) => {
     event.preventDefault();
@@ -30,19 +34,18 @@ const Card = ({ character }) => {
     const pickedCharacter = character.id;
     let favoriteCharacters = JSON.parse(localStorage.getItem('favoriteCharacters')) || [];
 
-    console.log(pickedCharacter);
-
     if (favoriteCharacters.includes(pickedCharacter)) {
       favoriteCharacters.splice(favoriteCharacters.indexOf(pickedCharacter), 1);
       localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
       setIsFavorite(false);
+      dispatch(decrement());
+
       return ;
     } 
     
     favoriteCharacters.push(pickedCharacter);
     setIsFavorite(true);
-
-    console.log(isFavorite);
+    dispatch(increment());
     localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters));
   };
 

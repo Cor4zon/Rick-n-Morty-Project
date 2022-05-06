@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LikeCounter from "../../LikeCounter/LikeCounter";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.section`
   background: #202428;
@@ -24,6 +25,8 @@ const Wrapper = styled.section`
 `;
 
 const Header = () => {
+  const likes = useSelector(state => state.likeCounter.likes);
+
   return (
     <>
       <Wrapper>
@@ -31,7 +34,7 @@ const Header = () => {
           <Link to="/characters">Character</Link>
           <Link to="/favorites">Favorites</Link>
         </nav>
-        <LikeCounter counter={0}/>
+        <LikeCounter counter={ likes }/>
         
       </Wrapper>
     </>

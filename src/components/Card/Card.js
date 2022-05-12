@@ -85,7 +85,7 @@ const Card = ({ character }) => {
         <div className="characher-description">
           <h4>{character.name}</h4>
           <p className="character-info">
-            {character.species} -{character.status}
+            {character.species} - {character.status}
           </p>
 
           <ButtonAdd onClick={BtnClickHandler}>

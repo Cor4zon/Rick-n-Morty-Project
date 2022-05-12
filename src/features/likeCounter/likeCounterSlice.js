@@ -11,10 +11,17 @@ export const likeCounterSlice = createSlice({
     },
     reducers: {
         increment: state => {
-            state.likes++
+            return {
+                ...state,
+                likes: state.likes + 1
+            };
+            
         },
         decrement: state => {
-            state.likes--
+            return {
+                ...state,
+                likes: state.likes - 1
+            }
         }
     }
 })

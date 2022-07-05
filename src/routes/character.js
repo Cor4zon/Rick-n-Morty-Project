@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardGrid from "../components/CardGrid/CardGrid";
 import APIClient from "../services/APIClient";
-import { characters } from "../charactersData";
 
 const Character = () => {
     const [characters, setCharacters ] = useState([]);

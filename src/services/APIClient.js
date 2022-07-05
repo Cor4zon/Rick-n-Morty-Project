@@ -18,6 +18,17 @@ class APIClient {
         )
     }
 
+    fetchOneCharacter(id) {
+        const wrapper = new AxiosWrapper("https://rickandmortyapi.com/api/character/" + id);
+        return Promise.resolve(
+            wrapper.get()
+                .catch((error) => {
+                    this.storage.clear();
+                    console.error(error);
+                    return Promise.reject(error);
+                })
+        )
+    }
 
 }
 

@@ -6,8 +6,8 @@ class APIClient {
         this.storage = new Storage(window.localStorage)
     }
 
-    fetchCharacters() {
-        const wrapper = new AxiosWrapper('https://rickandmortyapi.com/api/character');
+    fetchCharacters(path="https://rickandmortyapi.com/api/character") {
+        const wrapper = new AxiosWrapper(path);
         return Promise.resolve(
             wrapper.get()
                 .catch((error) => {

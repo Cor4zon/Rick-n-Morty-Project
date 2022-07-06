@@ -1,0 +1,27 @@
+.menu {
+    background-color: #f2f2f2;
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+
+.characters__categories {
+    display: flex;
+    list-style-type: none;
+}
+
+.character__type {
+    border: 1px solid black;
+
+    display: grid;
+    place-content: center;
+    padding: 0.3rem 0.5rem;
+}
+
+.character__type:hover {
+    background-color: dimgrey;
+}
+
+.formSearchCharacter {
+    margin-left: 2rem;
+}

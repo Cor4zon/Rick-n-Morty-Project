@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import CardGrid from "../components/CardGrid/CardGrid";
 import APIClient from "../services/APIClient";
 
+import './character.css';
+
 const Character = () => {
     const [characters, setCharacters ] = useState([]);
     const [ nextPageLink, setNextPageLink ] = useState(null);
     const [ prevPageLink, setPrevPageLink ] = useState(null);
-
+    const [ pageNumber, setPageNumber ] = useState(1);
     const client = new APIClient();
 
     useEffect(() => {
@@ -22,6 +24,7 @@ const Character = () => {
             setCharacters(result.data.results);
             setNextPageLink(result.data.info.next);
             setPrevPageLink(result.data.info.prev);
+            setPageNumber(pageNumber + 1);
         })
     }
 
@@ -30,14 +33,18 @@ const Character = () => {
             setCharacters(result.data.results);
             setNextPageLink(result.data.info.next);
             setPrevPageLink(result.data.info.prev);
+            setPageNumber(pageNumber - 1);
         })
     }
 
   return (
     <>
       <CardGrid characters={ characters }/>
-        <button onClick={loadPrevPage}>prev</button>
-        <button onClick={loadNextPage}>next</button>
+        <div className="pageInfo">
+            <p>Page { pageNumber } of 42</p>
+            <p className="changePageBtn" onClick={loadPrevPage}>{"<< Prev"}</p>
+            <p className="changePageBtn" onClick={loadNextPage}>{"Next >>"}</p>
+        </div>
     </>
   );
 };

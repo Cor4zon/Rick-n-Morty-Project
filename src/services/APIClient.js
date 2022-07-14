@@ -30,6 +30,17 @@ class APIClient {
         )
     }
 
+    fetchCharactersBySpecies(species) {
+        const wrapper = new AxiosWrapper("https://rickandmortyapi.com/api/character/?species=" + species);
+        return Promise.resolve(
+            wrapper.get()
+                .catch((error) => {
+                    this.storage.clear();
+                    console.error(error);
+                    return Promise.reject(error);
+                })
+        )
+    }
 }
 
 export default APIClient;

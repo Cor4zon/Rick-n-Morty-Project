@@ -22,6 +22,18 @@
     background-color: dimgrey;
 }
 
+.character__type:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.character__type:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+
+.character__type:not(:last-of-type) {
+    border-right: 0;
+}
+
 .formSearchCharacter {
     margin-left: 2rem;
 }

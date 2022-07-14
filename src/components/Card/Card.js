@@ -56,8 +56,8 @@ const Card = ({ character }) => {
     if (favoriteCharacters.includes(pickedCharacter)) {
       dislikeCharacter(favoriteCharacters, pickedCharacter);
       return ;
-    } 
-    
+    }
+
     favoriteCharacters.push(pickedCharacter);
     dispatch(increment());
     dispatch(addFavoriteCharacter(pickedCharacter));
@@ -71,16 +71,16 @@ const Card = ({ character }) => {
   return (
     <div className="Card">
       <Link
-        to={`/character/${character.id}`}
+        to={`/characters/${character.id}`}
         style={{
           height: "100%",
           width: "100%",
         }}
       >
         <ImageCharacter
-          src={character.image}
-          alt={character.name}
-        ></ImageCharacter>
+    src={character.image}
+    alt={character.name}
+    />
 
         <div className="characher-description">
           <h4>{character.name}</h4>

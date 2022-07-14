@@ -15,6 +15,7 @@ const CharacterInfo = () => {
             console.log(result.data);
         })
     }, [])
+
     return (
         <div>
             <h1>Character info</h1>

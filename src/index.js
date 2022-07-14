@@ -21,7 +21,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            {/*<Route index path="/" element={<Character />} />*/}
+            <Route index path="/" element={<Character />} />
             <Route path="characters" element={<Outlet />} >
               <Route index path="" element={<Character />} />
               <Route path=":id" element={<CharacterInfo />} />

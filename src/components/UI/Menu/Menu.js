@@ -14,7 +14,7 @@ const Menu = () => {
 
             <form action="" method="get" className="formSearchCharacter">
                 <input type="text" name="name" id="name" required placeholder="Search by name..." />
-                <button type="submit">Search</button>
+                <button type="submit" className="searchBtn">Search</button>
             </form>
         </div>
     );

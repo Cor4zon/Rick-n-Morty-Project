@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     addSelectedCharacters,
     setNextPage,
     setPrevPage
 } from "../../../features/selectedCharacters/selectedCharactersSlice";
+
 import {useDispatch} from "react-redux";
 import APIClient from "../../../services/APIClient";
 import './Menu.css';
 
 const Menu = () => {
+    const [ searchName, setSearchName ] = useState("");
     const dispatch = useDispatch();
     const client = new APIClient();
 
@@ -17,6 +19,21 @@ const Menu = () => {
         const characterType = event.target.className.split(" ")[1];
 
         client.fetchCharactersBySpecies(characterType).then((result) => {
+            console.log(result.data);
+            dispatch(addSelectedCharacters(result.data.results));
+            dispatch(setNextPage(result.data.info.next))
+            dispatch(setPrevPage(result.data.info.prev))
+        });
+    }
+
+    const searchInputChange = (event) => {
+        setSearchName(event.target.value);
+    }
+
+    const searchByName = (event) => {
+        event.preventDefault();
+
+        client.fetchCharactersByName(searchName).then((result) => {
             console.log(result.data);
             dispatch(addSelectedCharacters(result.data.results));
             dispatch(setNextPage(result.data.info.next))
@@ -34,8 +51,8 @@ const Menu = () => {
             </ul>
 
             <form action="" method="get" className="formSearchCharacter">
-                <input type="text" name="name" id="name" required placeholder="Search by name..." />
-                <button type="submit" className="searchBtn">Search</button>
+                <input type="text" onChange={searchInputChange} name="name" id="name" required placeholder="Search by name..." />
+                <button type="submit" className="searchBtn" onClick={searchByName}>Search</button>
             </form>
         </div>
     );

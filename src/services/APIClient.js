@@ -6,7 +6,7 @@ class APIClient {
         this.storage = new Storage(window.localStorage)
     }
 
-    fetchCharacters(path="https://rickandmortyapi.com/api/character") {
+    fetchCharacters(path="https://rickandmortyapi.com/api/character/") {
         const wrapper = new AxiosWrapper(path);
         return Promise.resolve(
             wrapper.get()
@@ -32,6 +32,19 @@ class APIClient {
 
     fetchCharactersBySpecies(species) {
         const wrapper = new AxiosWrapper("https://rickandmortyapi.com/api/character/?species=" + species);
+        return Promise.resolve(
+            wrapper.get()
+                .catch((error) => {
+                    this.storage.clear();
+                    console.error(error);
+                    return Promise.reject(error);
+                })
+        )
+    }
+
+    // https://rickandmortyapi.com/api/character/?page=2&name=rick&name=Rick
+    fetchCharactersByName(name) {
+        const wrapper = new AxiosWrapper(`https://rickandmortyapi.com/api/character/?name=${name}`);
         return Promise.resolve(
             wrapper.get()
                 .catch((error) => {

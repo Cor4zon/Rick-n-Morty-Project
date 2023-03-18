@@ -1,1 +1,1 @@
-https://rick-i-morty.herokuapp.com/
+https://rick-n-morty-project.vercel.app/characters

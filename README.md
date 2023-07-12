@@ -1,6 +1,6 @@
 [Link](https://rick-n-morty-project.vercel.app/characters)
 
-## App's purpose
+## 💡 App's purpose
 
 React Front End Application
 
@@ -15,7 +15,7 @@ Passing functions as props for prop drilling
 React and Redux
 
 
-## Main features:
+## 🦾 Main features:
 
 - [x] Search by name
 

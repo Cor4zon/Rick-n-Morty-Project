@@ -9,21 +9,21 @@ A simple front end in React that uses a fetch call from the [Rick & Morty API](h
 This app demonstrates knowledge of:
 
 Javascript ES6+ Syntax
-React Syntax
 Lifecycle Methods
 API Calls using axios
 Passing functions as props for prop drilling
+React and Redux
 
 
 ## Main features:
 
-- [ ] Search by name
+- [x] Search by name
 
-- [ ] Save favorite characters 
+- [x] Save favorite characters
 
-- [ ] Search by character category
+- [x] Search by character category
 
-- [ ] Pagination
+- [x] Pagination
 
 ## 🔧 Build with
 
@@ -40,9 +40,9 @@ Passing functions as props for prop drilling
 
 3. ```cd Rick-n-Morty-Project```
 
-4. ```run npm install```
+4. run ```npm install```
 
-5. ```run npm start ```🎉
+5. run ```npm start ```🎉
 
 
 ## Author

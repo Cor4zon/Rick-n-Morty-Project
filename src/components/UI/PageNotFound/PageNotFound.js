@@ -9,7 +9,7 @@ const PageNotFound = () => {
       <h1>The page you're looking for is not found</h1>
       <Link
         to="/characters"
-        className="BackLink"
+        className="back-link"
       >
         Back to Characters
       </Link>

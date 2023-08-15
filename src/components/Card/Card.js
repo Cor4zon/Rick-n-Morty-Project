@@ -69,7 +69,7 @@ const Card = ({ character }) => {
   }
 
   return (
-    <div className="Card">
+    <div className="card">
       <Link
         to={`/characters/${character.id}`}
         style={{

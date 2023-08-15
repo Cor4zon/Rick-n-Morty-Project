@@ -52,7 +52,7 @@ const Menu = () => {
 
             <form action="" method="get" className="formSearchCharacter">
                 <input type="text" onChange={searchInputChange} name="name" id="name" required placeholder="Search by name..." />
-                <button type="submit" className="searchBtn" onClick={searchByName}>Search</button>
+                <button type="submit" className="search-btn" onClick={searchByName}>Search</button>
             </form>
         </div>
     );

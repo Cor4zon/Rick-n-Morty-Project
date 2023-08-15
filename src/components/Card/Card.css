@@ -3,7 +3,7 @@ a {
     color: black;
 }
 
-.Card {
+.card {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -13,7 +13,7 @@ a {
 
     border: 1px solid #afafaf;
     border-radius: 4px;
-
+    
 }
 
 

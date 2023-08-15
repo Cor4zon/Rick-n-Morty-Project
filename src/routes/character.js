@@ -57,10 +57,10 @@ const Character = () => {
   return (
         <>
             <CardGrid characters={ characters }/>
-            <div className="pageInfo">
+            <div className="page-info">
                 <p>Page { pageNumber } of 42</p>
-                <p className="changePageBtn" onClick={loadPrevPage}>{"<< Prev"}</p>
-                <p className="changePageBtn" onClick={loadNextPage}>{"Next >>"}</p>
+                <p className="change-page-btn" onClick={loadPrevPage}>{"<< Prev"}</p>
+                <p className="change-page-btn" onClick={loadNextPage}>{"Next >>"}</p>
             </div>
         </>
   );

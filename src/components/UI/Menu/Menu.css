@@ -12,7 +12,6 @@
 
 .character__type {
     border: 1px solid black;
-
     display: grid;
     place-content: center;
     padding: 0.3rem 0.5rem;
@@ -42,7 +41,7 @@ input#name {
     height: 27px;
 }
 
-.searchBtn {
+.search-btn {
     height: 33px;
     color: #afafaf;
     border: 1px solid #afafaf;

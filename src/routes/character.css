@@ -1,4 +1,4 @@
-.pageInfo {
+.page-info {
     display: flex;
     width: 20%;
     justify-content: space-between;
@@ -6,7 +6,7 @@
     right: 5rem;
 }
 
-.changePageBtn:hover,
-.changePageBtn:active {
+.change-page-btn:hover,
+.change-page-btn:active {
     color: grey;
 }

@@ -1,5 +1,4 @@
-import { type } from "@testing-library/user-event/dist/type";
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
